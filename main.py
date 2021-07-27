@@ -43,3 +43,15 @@ print(df.set_index(['Sector', 'Price/Earnings']))
 
 print(df['Price/Earnings'].mean())
 print(df['Price/Earnings'].median())
+
+print(df.loc[1:20, ['Name']])
+
+stockprices = pd.read_csv("SP 500 Stock Prices 2014-2017.csv")
+print(stockprices.head(5))
+print(stockprices.describe)
+print(stockprices.info())
+
+financials = df.merge(stockprices, how='left',
+                                      left_on="Symbol",
+                                      right_on="symbol")
+
