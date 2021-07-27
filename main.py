@@ -8,6 +8,16 @@ data = requests.get("http://api.open-notify.org/iss-now.json")
 parsed_data = data.json()
 print(parsed_data["timestamp"])
 
+data2 = requests.get("http://api.open-notify.org/astros.json")
+parsed_data2 = data2.json()
+
+
+for p in parsed_data2['people']:
+    print(p['name'])
+
+
+
+
 data1 = requests.get(
     "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=8HKU2KODGW7DY1OA")
 print(data1)
@@ -30,3 +40,6 @@ print(df.loc[df.duplicated(), :])
 print(df.groupby(['Sector']).Price.agg([len, min, max]))
 print(df.sort_values(by=['EBITDA', 'Name'], ascending=False)[['EBITDA', 'Name']])
 print(df.set_index(['Sector', 'Price/Earnings']))
+
+print(df['Price/Earnings'].mean())
+print(df['Price/Earnings'].median())
