@@ -24,3 +24,6 @@ print(df.isna().sum())
 
 df.fillna(df.mean(), inplace=True)
 print(df.isna().sum())
+print(df.Name.duplicated().sum())
+print(~df.Name.duplicated().sum())
+print(df.loc[df.duplicated(), :])
