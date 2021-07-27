@@ -19,3 +19,8 @@ print(df.info())
 
 missing = df.isnull().sum()
 print(missing)
+
+print(df.isna().sum())
+
+df.fillna(df.mean(), inplace=True)
+print(df.isna().sum())
