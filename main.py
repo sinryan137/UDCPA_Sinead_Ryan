@@ -69,5 +69,33 @@ def sayhello():
 print(sayhello())
 
 
+Avg_PE_Sector=financials.groupby("Sector")['Price/Earnings'].mean()
+Avg_PE_Sector.plot(x="Price/Earnings", y="Sector", kind='bar', title="Mean_P/E_by_Sector", rot=45)
+plt.show()
+
+print(financials.groupby(['Sector']).sum())
+
+print(financials.loc[financials['Sector'] == 'Materials'])
+
+Consumer_Discretionary = df['Sector'] == 'Consumer Discretionary'
+Consumer_Staples = df['Sector'] == 'Consumer Staples'
+Health_Care = df['Sector'] == 'Health Care'
+Information_Technology = df['Sector'] == 'Information Technology'
+Energy = df['Sector'] == 'Energy'
+Real_Estate = df['Sector'] == 'Real Estate'
+fig, ax = plt.subplots()
+ax.plot(Consumer_Discretionary['Price'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
+ax.plot(Consumer_Staples['Price'], Consumer_Staples['Dividend Yield'], color='blue', label=Consumer_Staples)
+ax.plot(Energy['Price'], Energy['Dividend Yield'], color='green', label=Energy)
+ax.plot(Health_Care['Price'], Health_Care['Dividend Yield'], color='purple', label=Health_Care)
+ax.plot(Real_Estate['Price'], Real_Estate['Dividend Yield'], color='brown', label=Real_Estate)
+ax.plot(Information_Technology['Price'], Information_Technology['Dividend Yield'], color='pink', label=Information_Technology)
+
+ax.ledgend()
+ax.set_xlabel('Price')
+ax.set_ylabel('Dividend Yield')
+
+plt.show()
+
 
 
