@@ -64,5 +64,10 @@ indexing_array = np.array([1, 3, 5, 7, 9])
 company_subset = company_array[indexing_array]
 print(company_subset)
 
+def sayhello():
+    print("Hello World")
+print(sayhello())
+
+
 
 
