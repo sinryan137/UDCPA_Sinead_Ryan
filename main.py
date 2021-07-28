@@ -37,7 +37,7 @@ print(df.isna().sum())
 print(df.Name.duplicated().sum())
 print(~df.Name.duplicated().sum())
 print(df.loc[df.duplicated(), :])
-print(df.groupby(['Sector']).Price.agg([len, min, max]))
+print(df.groupby(['Sector']).Price.agg([min, max]))
 print(df.sort_values(by=['EBITDA', 'Name'], ascending=False)[['EBITDA', 'Name']])
 print(df.set_index(['Sector', 'Price/Earnings']))
 
@@ -54,4 +54,15 @@ print(stockprices.info())
 financials = df.merge(stockprices, how='left',
                                       left_on="Symbol",
                                       right_on="symbol")
+
+print(financials.info())
+
+print(financials.sort_values(by=['high', 'Name'], ascending=False)[['high', 'Name']])
+
+company_array = np.array(['A.O. Smith Corp', 'Abbot Laboratories', 'AbbVie Inc.', 'Accenture plc', 'Activision Blizzard', 'Acuity Brands Inc', 'Adobe Systems Inc', 'Advance Auto Parts', 'Advanced Micro Devices Inc', 'AES Corp'])
+indexing_array = np.array([1, 3, 5, 7, 9])
+company_subset = company_array[indexing_array]
+print(company_subset)
+
+
 
