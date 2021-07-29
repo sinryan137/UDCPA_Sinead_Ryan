@@ -86,13 +86,13 @@ Energy = financials.loc[financials['Sector'] == 'Energy']
 Real_Estate = financials.loc[financials['Sector'] == 'Real Estate']
 
 fig, ax = plt.subplots()
-ax.plot(Consumer_Discretionary['Price'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
-ax.plot(Consumer_Staples['Price'], Consumer_Staples['Dividend Yield'], color='blue', label=Consumer_Staples)
-ax.plot(Energy['Price'], Energy['Dividend Yield'], color='green', label=Energy)
-ax.plot(Health_Care['Price'], Health_Care['Dividend Yield'], color='purple', label=Health_Care)
-ax.plot(Real_Estate['Price'], Real_Estate['Dividend Yield'], color='brown', label=Real_Estate)
-ax.plot(Information_Technology['Price'], Information_Technology['Dividend Yield'], color='pink', label=Information_Technology)
-ax.set_xlabel('Price')
+ax.plot(Consumer_Discretionary['date'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
+ax.plot(Consumer_Staples['date'], Consumer_Staples['Dividend Yield'], color='blue', label=Consumer_Staples)
+ax.plot(Energy['date'], Energy['Dividend Yield'], color='green', label=Energy)
+ax.plot(Health_Care['date'], Health_Care['Dividend Yield'], color='purple', label=Health_Care)
+ax.plot(Real_Estate['date'], Real_Estate['Dividend Yield'], color='brown', label=Real_Estate)
+ax.plot(Information_Technology['date'], Information_Technology['Dividend Yield'], color='pink', label=Information_Technology)
+ax.set_xlabel('date')
 ax.set_ylabel('Dividend Yield')
 plt.show()
 
