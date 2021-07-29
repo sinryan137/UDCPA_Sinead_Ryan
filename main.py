@@ -78,12 +78,12 @@ Avg_PE_Sector=financials.groupby("Sector")['Price/Earnings'].mean()
 Avg_PE_Sector.plot(x="Price/Earnings", y="Sector", kind='bar', title="Mean_P/E_by_Sector", rot=45)
 plt.show()
 
-Consumer_Discretionary = df.loc[df['Sector'] == 'Consumer Discretionary']
-Consumer_Staples = df.loc[df['Sector'] == 'Consumer Staples']
-Health_Care = df.loc[df['Sector'] == 'Health Care']
-Information_Technology = df.loc[df['Sector'] == 'Information Technology']
-Energy = df.loc[df['Sector'] == 'Energy']
-Real_Estate = df.loc[df['Sector'] == 'Real Estate']
+Consumer_Discretionary = financials.loc[financials['Sector'] == 'Consumer Discretionary']
+Consumer_Staples = financials.loc[financials['Sector'] == 'Consumer Staples']
+Health_Care = financials.loc[financials['Sector'] == 'Health Care']
+Information_Technology = financials.loc[financials['Sector'] == 'Information Technology']
+Energy = financials.loc[financials['Sector'] == 'Energy']
+Real_Estate = financials.loc[financials['Sector'] == 'Real Estate']
 
 fig, ax = plt.subplots()
 ax.plot(Consumer_Discretionary['Price'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
