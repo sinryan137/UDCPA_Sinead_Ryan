@@ -69,37 +69,30 @@ def sayhello():
 print(sayhello())
 
 
-Avg_PE_Sector=financials.groupby("Sector")['Price/Earnings'].mean()
-Avg_PE_Sector.plot(x="Price/Earnings", y="Sector", kind='bar', title="Mean_P/E_by_Sector", rot=45)
-plt.show()
+
 
 print(financials.groupby(['Sector']).sum())
 
 print(financials.loc[financials['Sector'] == 'Materials'])
+Avg_PE_Sector=financials.groupby("Sector")['Price/Earnings'].mean()
+Avg_PE_Sector.plot(x="Price/Earnings", y="Sector", kind='bar', title="Mean_P/E_by_Sector", rot=45)
+plt.show()
 
-sectors_column=df['Sector']
-sectors=df['Sector'].unique()
-print(sectors)
-
-fig, ax = plt.subplots()
-for sector in sectors:
-    sector_df=df[df['Sector'] == sector]
-    ax.plot(sector, sector_df['Price'].mean(), yerr=sector_df['Price'].std())
-    ax.set_ylabel='Price'
-    ax.set_xlabel='sector'
-    plt.show()
 Consumer_Discretionary = df.loc[df['Sector'] == 'Consumer Discretionary']
 Consumer_Staples = df.loc[df['Sector'] == 'Consumer Staples']
-Health_Care = df['Sector'] == 'Health Care'
+Health_Care = df.loc[df['Sector'] == 'Health Care']
 Information_Technology = df.loc[df['Sector'] == 'Information Technology']
 Energy = df.loc[df['Sector'] == 'Energy']
 Real_Estate = df.loc[df['Sector'] == 'Real Estate']
 
 fig, ax = plt.subplots()
-ax.plot(Real_Estate['Price/Earnings'], Real_Estate['Price'], color='red', label=Consumer_Discretionary)
-ax.set_xlabel('Sector')
-ax.set_ylabel('Price/Earnings')
-
+ax.plot(Consumer_Discretionary['Price'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
+ax.plot(Consumer_Staples['Price'], Consumer_Staples['Dividend Yield'], color='blue', label=Consumer_Staples)
+ax.plot(Energy['Price'], Energy['Dividend Yield'], color='green', label=Energy)
+ax.plot(Health_Care['Price'], Health_Care['Dividend Yield'], color='purple', label=Health_Care)
+ax.plot(Real_Estate['Price'], Real_Estate['Dividend Yield'], color='brown', label=Real_Estate)
+ax.plot(Information_Technology['Price'], Information_Technology['Dividend Yield'], color='pink', label=Information_Technology)
+ax.set_xlabel('Price')
+ax.set_ylabel('Dividend Yield')
 plt.show()
-
 
