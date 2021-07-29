@@ -78,6 +78,9 @@ Avg_PE_Sector=financials.groupby("Sector")['Price/Earnings'].mean()
 Avg_PE_Sector.plot(x="Price/Earnings", y="Sector", kind='bar', title="Mean_P/E_by_Sector", rot=45)
 plt.show()
 
+financials['year'] = pd.DatetimeIndex(financials['date']).year
+print(financials['year'])
+
 Consumer_Discretionary = financials.loc[financials['Sector'] == 'Consumer Discretionary']
 Consumer_Staples = financials.loc[financials['Sector'] == 'Consumer Staples']
 Health_Care = financials.loc[financials['Sector'] == 'Health Care']
@@ -85,14 +88,19 @@ Information_Technology = financials.loc[financials['Sector'] == 'Information Tec
 Energy = financials.loc[financials['Sector'] == 'Energy']
 Real_Estate = financials.loc[financials['Sector'] == 'Real Estate']
 
-fig, ax = plt.subplots()
-ax.plot(Consumer_Discretionary['date'], Consumer_Discretionary['Dividend Yield'], color='red', label=Consumer_Discretionary)
-ax.plot(Consumer_Staples['date'], Consumer_Staples['Dividend Yield'], color='blue', label=Consumer_Staples)
-ax.plot(Energy['date'], Energy['Dividend Yield'], color='green', label=Energy)
-ax.plot(Health_Care['date'], Health_Care['Dividend Yield'], color='purple', label=Health_Care)
-ax.plot(Real_Estate['date'], Real_Estate['Dividend Yield'], color='brown', label=Real_Estate)
-ax.plot(Information_Technology['date'], Information_Technology['Dividend Yield'], color='pink', label=Information_Technology)
-ax.set_xlabel('date')
-ax.set_ylabel('Dividend Yield')
-plt.show()
+Avg_high_Consumer_Discretionary = Consumer_Discretionary.groupby('year')['high'].mean()
+Avg_high_Consumer_Staples = Consumer_Staples.groupby('year')['high'].mean()
+Avg_high_Health_Care = Health_Care.groupby('year')['high'].mean()
+Avg_high_Information_Technology = Information_Technology.groupby('year')['high'].mean()
+Avg_high_Energy = Energy.groupby('year')['high'].mean()
+Avg_high_Real_Estate = Real_Estate.groupby('year')['high'].mean()
 
+fig, ax = plt.subplots()
+Avg_high_Consumer_Discretionary.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+Avg_high_Consumer_Staples.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+Avg_high_Health_Care.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+Avg_high_Information_Technology.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+Avg_high_Energy.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+Avg_high_Real_Estate.plot(x='year', y='high', kind='line', title='mean high price by sector', rot=45)
+
+plt.show()
